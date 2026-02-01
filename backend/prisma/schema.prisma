@@ -1,0 +1,115 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  CUSTOMER
+  TELLER
+  LOAN_OFFICER
+  ADMIN
+}
+
+enum AccountStatus {
+  PENDING
+  ACTIVE
+  FROZEN
+  CLOSED
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REVERSED
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  TRANSFER
+  LOAN_DISBURSEMENT
+  LOAN_REPAYMENT
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  role          Role      @default(CUSTOMER)
+  isMfaEnabled  Boolean   @default(false)
+  mfaSecret     String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  profile       Profile?
+  accounts      Account[]
+  auditLogs     AuditLog[]
+}
+
+model Profile {
+  id            String    @id @default(uuid())
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id])
+  firstName     String
+  lastName      String
+  phoneNumber   String    @unique
+  address       String?
+  dateOfBirth   DateTime?
+  nationalId    String?   @unique // Encrypted
+  kycLevel      Int       @default(1)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Account {
+  id            String         @id @default(uuid())
+  userId        String
+  user          User           @relation(fields: [userId], references: [id])
+  accountNumber String         @unique
+  type          String         // SAVINGS, CURRENT, SUSU
+  balance       Decimal        @default(0) @db.Decimal(15, 2)
+  currency      String         @default("GHS")
+  status        AccountStatus  @default(PENDING)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  
+  // Relations for Double-Entry
+  sentTransfers     Transaction[] @relation("SenderAccount")
+  receivedTransfers Transaction[] @relation("ReceiverAccount")
+}
+
+model Transaction {
+  id                String            @id @default(uuid())
+  reference         String            @unique
+  type              TransactionType
+  amount            Decimal           @db.Decimal(15, 2)
+  currency          String            @default("GHS")
+  status            TransactionStatus @default(PENDING)
+  description       String?
+  idempotencyKey    String?           @unique
+  
+  senderAccountId   String?
+  senderAccount     Account?          @relation("SenderAccount", fields: [senderAccountId], references: [id])
+  
+  receiverAccountId String?
+  receiverAccount   Account?          @relation("ReceiverAccount", fields: [receiverAccountId], references: [id])
+  
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id])
+  action      String   // e.g., "LOGIN", "TRANSFER_INITIATED"
+  resource    String   // e.g., "ACCOUNT", "USER"
+  metadata    Json?    // Stores old/new values, IP, Browser
+  createdAt   DateTime @default(now())
+}

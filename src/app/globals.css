@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1e293b;
+  --brand-green: #004d2c;
+  --brand-green-dark: #00331d;
+  --brand-yellow: #ffcd00;
+  --brand-yellow-light: #ffdc33;
+  --card: #ffffff;
+  --border: #e2e8f0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--brand-green);
+  --color-primary-dark: var(--brand-green-dark);
+  --color-secondary: var(--brand-yellow);
+  --color-secondary-light: var(--brand-yellow-light);
+  --color-accent: var(--brand-yellow);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Poppins", "Inter", system-ui, sans-serif;
+
+  --radius-lg: 1rem;
+  --radius-md: 0.5rem;
+  --radius-sm: 0.25rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-6 py-2.5 rounded-md font-medium transition-all hover:bg-primary-dark active:scale-95 shadow-sm;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-primary px-6 py-2.5 rounded-md font-bold transition-all hover:bg-secondary-light active:scale-95 shadow-sm;
+}
+
+.btn-outline {
+  @apply border-2 border-primary text-primary px-6 py-2.5 rounded-md font-medium transition-all hover:bg-primary hover:text-white active:scale-95;
+}
+
+.glass {
+  @apply bg-white/80 backdrop-blur-md border border-white/20;
+}
