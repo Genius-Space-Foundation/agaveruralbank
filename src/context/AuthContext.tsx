@@ -11,6 +11,7 @@ interface User {
   firstName: string;
   lastName: string;
   role: string;
+  kycLevel: number;
 }
 
 interface AuthContextType {
@@ -18,6 +19,7 @@ interface AuthContextType {
   loading: boolean;
   login: (token: string, userData: User) => void;
   logout: () => void;
+  refreshProfile: () => Promise<void>;
   isAuthenticated: boolean;
 }
 
@@ -28,24 +30,28 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  const refreshProfile = async () => {
+    const token = Cookies.get('agave_token');
+    if (token) {
+      try {
+        const response = await api.get('/customers/profile');
+        setUser({
+          id: response.data.userId,
+          email: response.data.user.email,
+          firstName: response.data.firstName,
+          lastName: response.data.lastName,
+          role: response.data.user.role,
+          kycLevel: response.data.kycLevel,
+        });
+      } catch (error) {
+        console.error('Failed to refresh profile:', error);
+      }
+    }
+  };
+
   useEffect(() => {
     const initAuth = async () => {
-      const token = Cookies.get('agave_token');
-      if (token) {
-        try {
-          const response = await api.get('/customers/profile');
-          setUser({
-            id: response.data.userId,
-            email: response.data.user.email,
-            firstName: response.data.firstName,
-            lastName: response.data.lastName,
-            role: response.data.user.role,
-          });
-        } catch (error) {
-          console.error('Failed to restore auth session:', error);
-          Cookies.remove('agave_token');
-        }
-      }
+      await refreshProfile();
       setLoading(false);
     };
 
@@ -65,7 +71,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, isAuthenticated: !!user }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, refreshProfile, isAuthenticated: !!user }}>
       {children}
     </AuthContext.Provider>
   );

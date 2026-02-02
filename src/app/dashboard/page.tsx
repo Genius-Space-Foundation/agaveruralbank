@@ -10,7 +10,8 @@ import {
   User,
   Settings,
   PieChart,
-  ArrowRight
+  ArrowRight,
+  Banknote
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import api from '@/lib/api';
@@ -20,6 +21,9 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import TransferForm from '@/components/transactions/TransferForm';
 import BottomNav from '@/components/dashboard/BottomNav';
+import Link from 'next/link';
+import { Lock } from 'lucide-react';
+import SavingsGoals from '@/components/dashboard/SavingsGoals';
 
 interface Account {
   id: string;
@@ -103,7 +107,7 @@ export default function DashboardPage() {
                     Agave Rural Bank: Partnering for your growth.
                   </p>
                 </div>
-                
+
                 <div className="hidden md:flex items-center gap-3">
                   <button onClick={fetchData} className="p-3 bg-white border border-neutral-100 rounded-2xl text-neutral-400 hover:text-primary transition-all shadow-sm group">
                     <RefreshCcw size={20} className="group-active:rotate-180 transition-transform duration-500" />
@@ -114,6 +118,27 @@ export default function DashboardPage() {
                   </button>
                 </div>
               </div>
+
+              {/* KYC Status Banner */}
+              {user && user.kycLevel < 2 && (
+                <div className="mb-8 bg-gradient-to-r from-secondary/30 to-secondary/10 border border-secondary/20 p-6 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center text-primary shadow-inner">
+                      <Lock size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-neutral-900">Verify your identity</h4>
+                      <p className="text-neutral-500 text-sm italic">Unlock higher transfer limits and secure your account today.</p>
+                    </div>
+                  </div>
+                  <Link 
+                    href="/dashboard/kyc"
+                    className="bg-primary text-white px-8 py-3 rounded-2xl font-bold hover:bg-primary-dark transition-all shadow-lg active:scale-95 whitespace-nowrap"
+                  >
+                    Start Verification
+                  </Link>
+                </div>
+              )}
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Left Column: Accounts & Quick Actions */}
@@ -151,6 +176,7 @@ export default function DashboardPage() {
 
                 {/* Right Column: Profile & Insights (Hidden partially on mobile since BottomNav exists) */}
                 <div className="hidden lg:block space-y-8">
+                  {/* Profile Section */}
                   <div className="bg-white rounded-3xl p-8 border border-neutral-100 shadow-sm">
                     <div className="flex items-center gap-4 mb-8">
                       <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary border border-primary/10">
@@ -176,6 +202,19 @@ export default function DashboardPage() {
                         <ArrowRight size={16} className="text-neutral-300 group-hover:text-primary transition-colors" />
                       </button>
 
+                      <Link 
+                        href="/dashboard/loans"
+                        className="p-4 bg-neutral-50 rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-neutral-100 transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary shadow-sm">
+                            <Banknote size={18} />
+                          </div>
+                          <span className="font-bold text-sm text-neutral-700">Apply for Loan</span>
+                        </div>
+                        <ArrowRight size={16} className="text-neutral-300 group-hover:text-primary transition-colors" />
+                      </Link>
+
                       <div className="p-4 bg-neutral-50 rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-neutral-100 transition-colors">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-secondary shadow-sm">
@@ -184,16 +223,6 @@ export default function DashboardPage() {
                           <span className="font-bold text-sm text-neutral-700">Insights</span>
                         </div>
                         <ArrowRight size={16} className="text-neutral-300 group-hover:text-secondary transition-colors" />
-                      </div>
-
-                      <div className="p-4 bg-neutral-50 rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-neutral-100 transition-colors">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-neutral-400 shadow-sm">
-                            <Settings size={18} />
-                          </div>
-                          <span className="font-bold text-sm text-neutral-700">Settings</span>
-                        </div>
-                        <ArrowRight size={16} className="text-neutral-300 transition-colors" />
                       </div>
                     </div>
 
@@ -204,6 +233,9 @@ export default function DashboardPage() {
                       Sign Out of Portal
                     </button>
                   </div>
+
+                  {/* Savings Goals Component */}
+                  <SavingsGoals />
 
                   <div className="bg-secondary rounded-3xl p-8 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">

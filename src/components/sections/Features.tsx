@@ -80,7 +80,7 @@ export default function Features() {
                 Agave Rural Bank specializes in agricultural financing. Get seasonal loans with flexible repayment plans tailored to your harvest cycle.
               </p>
             </div>
-            <Link href="/loans/agriculture" className="btn-secondary whitespace-nowrap shadow-lg">
+            <Link href="/loans#FARM" className="btn-secondary whitespace-nowrap shadow-lg">
               Get Agriculture Loan
             </Link>
           </div>

@@ -50,6 +50,42 @@ model User {
   profile       Profile?
   accounts      Account[]
   auditLogs     AuditLog[]
+  goals         Goal[]
+  loans         Loan[]
+}
+
+model Goal {
+  id            String   @id @default(uuid())
+  title         String
+  targetAmount  Decimal  @db.Decimal(15, 2)
+  currentAmount Decimal  @default(0) @db.Decimal(15, 2)
+  currency      String   @default("GHS")
+  deadline      DateTime?
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+enum LoanStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  PAID
+}
+
+model Loan {
+  id            String   @id @default(uuid())
+  amount        Decimal  @db.Decimal(15, 2)
+  type          String   // PERSONAL, BUSINESS, FARM
+  status        LoanStatus @default(PENDING)
+  interestRate  Decimal  @db.Decimal(5, 2)
+  termMonths    Int
+  purpose       String
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model Profile {

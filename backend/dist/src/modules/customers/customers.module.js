@@ -10,14 +10,16 @@ exports.CustomersModule = void 0;
 const common_1 = require("@nestjs/common");
 const customers_controller_1 = require("./customers.controller");
 const customers_service_1 = require("./customers.service");
+const goals_controller_1 = require("./goals.controller");
+const goals_service_1 = require("./goals.service");
 let CustomersModule = class CustomersModule {
 };
 exports.CustomersModule = CustomersModule;
 exports.CustomersModule = CustomersModule = __decorate([
     (0, common_1.Module)({
-        controllers: [customers_controller_1.CustomersController],
-        providers: [customers_service_1.CustomersService],
-        exports: [customers_service_1.CustomersService],
+        controllers: [customers_controller_1.CustomersController, goals_controller_1.GoalsController],
+        providers: [customers_service_1.CustomersService, goals_service_1.GoalsService],
+        exports: [customers_service_1.CustomersService, goals_service_1.GoalsService],
     })
 ], CustomersModule);
 //# sourceMappingURL=customers.module.js.map

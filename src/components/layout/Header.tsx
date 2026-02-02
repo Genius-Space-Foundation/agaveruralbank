@@ -99,13 +99,21 @@ const Header = () => {
                 </button>
               </div>
             ) : (
-              <Link 
-                href="/login"
-                className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all shadow-lg active:scale-95 text-sm"
-              >
-                <Lock size={16} />
-                Internet Banking
-              </Link>
+              <div className="flex items-center gap-3">
+                <Link 
+                  href="/personal/open-account"
+                  className="bg-neutral-100 hover:bg-neutral-200 text-primary px-6 py-3 rounded-full font-bold transition-all active:scale-95 text-sm"
+                >
+                  Open Account
+                </Link>
+                <Link 
+                  href="/login"
+                  className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all shadow-lg active:scale-95 text-sm"
+                >
+                  <Lock size={16} />
+                  Internet Banking
+                </Link>
+              </div>
             )}
           </div>
 
@@ -166,14 +174,23 @@ const Header = () => {
                 </button>
               </>
             ) : (
-              <Link 
-                href="/login"
-                className="w-full bg-primary text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Lock size={20} />
-                Login to Portal
-              </Link>
+              <>
+                <Link 
+                  href="/personal/open-account"
+                  className="w-full bg-neutral-100 text-primary py-4 rounded-2xl font-bold text-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Open New Account
+                </Link>
+                <Link 
+                  href="/login"
+                  className="w-full bg-primary text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Lock size={20} />
+                  Login to Portal
+                </Link>
+              </>
             )}
           </div>
         </div>

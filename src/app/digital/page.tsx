@@ -33,7 +33,7 @@ export default function DigitalBanking() {
       
       <main className="flex-grow pt-40 text-foreground">
         {/* Banner */}
-        <section className="bg-indigo-900 py-24 relative overflow-hidden text-white">
+        <section className="bg-primary py-24 relative overflow-hidden text-white">
           <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 bg-accent/20 text-accent px-4 py-1 rounded-full text-sm font-bold mb-6">
@@ -78,6 +78,7 @@ export default function DigitalBanking() {
                </div>
             </div>
           </div>
+           <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/10 -skew-x-12 translate-x-1/2"></div>
         </section>
 
         {/* Channels */}

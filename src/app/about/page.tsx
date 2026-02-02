@@ -47,7 +47,7 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-2xl shadow-xl max-w-[240px] border">
+                <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-2xl shadow-xl max-w-[240px]  border border-primary">
                   <p className="text-primary font-bold text-4xl mb-1">35+</p>
                   <p className="text-gray-500 font-medium">Years of Community Impact</p>
                 </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                 { icon: <History />, title: "Accountability", desc: "Taking responsibility for our actions and results." },
                 { icon: <Users2 />, title: "Teamwork", desc: "Collaborating to achieve excellence together." }
               ].map((value, idx) => (
-                <div key={idx} className="bg-white p-8 rounded-2xl border hover:border-primary/20 hover:shadow-xl transition-all text-center">
+                <div key={idx} className="bg-white p-8 rounded-2xl border  border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all text-center">
                   <div className="inline-flex p-4 bg-primary/5 text-primary rounded-xl mb-6">
                     {React.cloneElement(value.icon, { size: 32 })}
                   </div>
@@ -119,7 +119,7 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-              {[1, 2, 3].map((member) => (
+              {[1, 2, 3,].map((member) => (
                 <div key={member} className="group">
                   <div className="aspect-[4/5] bg-gray-100 rounded-3xl mb-6 overflow-hidden relative">
                     <div className="absolute inset-0 bg-primary/20 group-hover:bg-primary/0 transition-all"></div>

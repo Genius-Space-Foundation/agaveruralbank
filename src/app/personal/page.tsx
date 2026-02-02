@@ -75,7 +75,7 @@ export default function PersonalBanking() {
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Banking for Individuals</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {products.map((p, idx) => (
-                <div key={idx} className="p-8 rounded-2xl border hover:border-primary/20 hover:shadow-xl transition-all flex flex-col">
+                <div key={idx} className="p-8 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all flex flex-col">
                   <div className="w-16 h-16 bg-primary/5 text-primary rounded-xl flex items-center justify-center mb-6">
                     {p.icon}
                   </div>

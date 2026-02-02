@@ -10,14 +10,16 @@ exports.TransactionsModule = void 0;
 const common_1 = require("@nestjs/common");
 const transactions_controller_1 = require("./transactions.controller");
 const transactions_service_1 = require("./transactions.service");
+const loans_controller_1 = require("./loans.controller");
+const loans_service_1 = require("./loans.service");
 let TransactionsModule = class TransactionsModule {
 };
 exports.TransactionsModule = TransactionsModule;
 exports.TransactionsModule = TransactionsModule = __decorate([
     (0, common_1.Module)({
-        controllers: [transactions_controller_1.TransactionsController],
-        providers: [transactions_service_1.TransactionsService],
-        exports: [transactions_service_1.TransactionsService],
+        controllers: [transactions_controller_1.TransactionsController, loans_controller_1.LoansController],
+        providers: [transactions_service_1.TransactionsService, loans_service_1.LoansService],
+        exports: [transactions_service_1.TransactionsService, loans_service_1.LoansService],
     })
 ], TransactionsModule);
 //# sourceMappingURL=transactions.module.js.map

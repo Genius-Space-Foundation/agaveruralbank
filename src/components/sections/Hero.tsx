@@ -20,7 +20,7 @@ export default function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 w-full">
         <div className="max-w-2xl text-white">
-          <div className="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-md border border-secondary/30 text-secondary-light px-4 py-1.5 rounded-full text-sm font-semibold mb-6 animate-fade-in">
+          <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-md border border-secondary/30 text-white px-4 py-1.5 rounded-full text-sm font-semibold mb-6 animate-fade-in">
             <ShieldCheck size={16} />
             Trusted Financial Partner in Ghana
           </div>
@@ -42,7 +42,7 @@ export default function Hero() {
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 
-              href="/loans/apply" 
+              href="/loans" 
               className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-3.5 rounded-md font-semibold hover:bg-white hover:text-primary transition-all text-lg flex items-center justify-center gap-2"
             >
               Apply for a Loan

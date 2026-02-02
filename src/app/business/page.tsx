@@ -35,7 +35,7 @@ export default function BusinessBanking() {
         <section className="bg-primary py-24 relative overflow-hidden text-white">
           <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
             <div className="max-w-2xl">
-              <h1 className="text-5xl font-bold mb-6 italic">Partnering for <span className="text-accent underline">Business Success</span></h1>
+              <h1 className="text-5xl font-bold mb-6 ">Partnering for <span className="text-accent bold">Business Success</span></h1>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                 Whether you're a small stall owner or a large commercial farm, we provide the financial power to scale your operations.
               </p>
@@ -45,9 +45,10 @@ export default function BusinessBanking() {
               </div>
             </div>
           </div>
-          <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 flex items-center justify-center transform translate-x-1/4">
+          {/* <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 flex items-center justify-center transform translate-x-1/4">
              <Building2 size={400} />
-          </div>
+          </div> */}
+           <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/10 -skew-x-12 translate-x-1/2"></div>
         </section>
 
         {/* Business Grid */}
@@ -60,7 +61,8 @@ export default function BusinessBanking() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {businessProducts.map((p, idx) => (
-                <div key={idx} className="p-8 rounded-2xl border hover:border-secondary/20 hover:shadow-xl transition-all flex flex-col bg-gray-50/50">
+                <div key={idx} className="p-8 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all flex flex-col bg-gray-50/50">
+                  
                   <div className="w-16 h-16 bg-secondary/10 text-secondary rounded-xl flex items-center justify-center mb-6">
                     {p.icon}
                   </div>

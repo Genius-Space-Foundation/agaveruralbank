@@ -19,10 +19,10 @@ const Footer = () => {
     {
       title: "Business & Loans",
       links: [
-        { name: "SME Accounts", href: "/business/sme" },
-        { name: "Agricultural Loans", href: "/loans/agriculture" },
-        { name: "Personal Loans", href: "/loans/personal" },
-        { name: "Group Accounts", href: "/business/group" },
+        { name: "SME Accounts", href: "/business" },
+        { name: "Agricultural Loans", href: "/loans#FARM" },
+        { name: "Personal Loans", href: "/loans#PERSONAL" },
+        { name: "Business Micro-Credit", href: "/loans#BUSINESS" },
       ],
     },
     {

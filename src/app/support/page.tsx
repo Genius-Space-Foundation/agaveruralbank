@@ -17,13 +17,14 @@ export default function SupportPage() {
               Our team is dedicated to providing you with the best banking experience. Reach out to us through any of the channels below.
             </p>
           </div>
+           <div className="absolute top-0 right-0 w-1/3 h-full bg-accent/10 -skew-x-12 translate-x-1/2"></div>
         </section>
 
         {/* Contact Cards */}
         <section className="py-16 -mt-12">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-10 rounded-3xl shadow-xl flex flex-col items-center text-center border">
+              <div className="bg-white p-10 rounded-3xl shadow-xl flex flex-col items-center text-center border border-gray-100 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5">
                 <div className="p-4 bg-secondary/10 text-secondary rounded-2xl mb-6">
                   <Phone size={32} />
                 </div>
@@ -34,7 +35,7 @@ export default function SupportPage() {
                   <p className="text-lg font-bold text-primary">+233 (0) 24 123 4567</p>
                 </div>
               </div>
-              <div className="bg-white p-10 rounded-3xl shadow-xl flex flex-col items-center text-center border">
+              <div className="bg-white p-10 rounded-3xl shadow-xl flex flex-col items-center text-center border border-gray-100 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5">
                 <div className="p-4 bg-primary/10 text-primary rounded-2xl mb-6">
                   <Mail size={32} />
                 </div>
@@ -43,7 +44,7 @@ export default function SupportPage() {
                 <p className="text-lg font-bold text-primary">customercare@agaveruralbank.com</p>
                 <p className="text-lg font-bold text-primary">info@agaveruralbank.com</p>
               </div>
-              <div className="bg-white p-10 rounded-3xl shadow-xl flex flex-col items-center text-center border">
+              <div className="bg-white p-10 rounded-3xl shadow-xl flex flex-col items-center text-center  border border-gray-100 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5">
                 <div className="p-4 bg-accent/20 text-primary rounded-2xl mb-6">
                   <Clock size={32} />
                 </div>

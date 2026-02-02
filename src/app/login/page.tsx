@@ -45,7 +45,7 @@ export default function LoginPage() {
               <div className="bg-white p-2 rounded-full mb-3 shadow-sm border border-neutral-100">
                 <Image src="/logo.png" alt="Logo" width={60} height={60} />
               </div>
-              <span className="text-primary font-bold text-2xl">AGAVE BANK</span>
+              <span className="text-primary font-bold text-2xl">AGAVE RURAL BANK</span>
               <span className="text-secondary font-semibold text-xs tracking-widest mt-1">SECURE PORTAL</span>
             </Link>
             <h1 className="text-2xl font-bold text-neutral-900 text-center">Login to your account</h1>
@@ -129,7 +129,7 @@ export default function LoginPage() {
         <div className="bg-neutral-50 px-8 py-6 border-t border-neutral-100 text-center">
           <p className="text-sm text-neutral-600 font-medium">
             Don't have an account yet?{' '}
-            <Link href="#" className="text-secondary hover:underline font-bold">
+            <Link href="/register" className="text-secondary hover:underline font-bold">
               Join Agave Bank
             </Link>
           </p>
