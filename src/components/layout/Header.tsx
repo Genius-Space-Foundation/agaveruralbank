@@ -48,7 +48,7 @@ const Header = () => {
       </div>
 
       {/* Main Navigation */}
-      <nav className={`transition-all duration-300 px-4 md:px-8 py-4 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg py-3 translate-y-[-38px]" : "bg-white/90 backdrop-blur-sm"}`}>
+      <nav className={`transition-all duration-300 px-4 md:px-8 py-4 ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg py-3 md:translate-y-[-38px]" : "bg-white/90 backdrop-blur-sm"}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
