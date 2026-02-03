@@ -71,6 +71,7 @@ export declare class StaffService {
             userId: string | null;
             action: string;
             resource: string;
+            resourceId: string | null;
             metadata: import("@prisma/client/runtime/client").JsonValue | null;
         }[];
         loans: {
@@ -96,6 +97,17 @@ export declare class StaffService {
         updatedAt: Date;
     }>;
     updateKycStatus(userId: string, dto: UpdateKycStatusDto): Promise<{
+        user: {
+            id: string;
+            email: string;
+            password: string;
+            role: import("@prisma/client").$Enums.Role;
+            isMfaEnabled: boolean;
+            mfaSecret: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+        };
+    } & {
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -123,6 +135,7 @@ export declare class StaffService {
         userId: string | null;
         action: string;
         resource: string;
+        resourceId: string | null;
         metadata: import("@prisma/client/runtime/client").JsonValue | null;
     })[]>;
 }

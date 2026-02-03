@@ -154,6 +154,9 @@ model AuditLog {
   user        User?    @relation(fields: [userId], references: [id])
   action      String   // e.g., "LOGIN", "TRANSFER_INITIATED"
   resource    String   // e.g., "ACCOUNT", "USER"
+  resourceId  String?  // ID of the affected resource
   metadata    Json?    // Stores old/new values, IP, Browser
   createdAt   DateTime @default(now())
+
+  @@map("audit_logs")
 }

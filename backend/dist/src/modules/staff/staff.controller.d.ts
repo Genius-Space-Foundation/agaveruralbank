@@ -8,7 +8,6 @@ export declare class StaffController {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            userId: string;
             firstName: string;
             lastName: string;
             phoneNumber: string;
@@ -17,17 +16,18 @@ export declare class StaffController {
             nationalId: string | null;
             kycLevel: number;
             kycStatus: import("@prisma/client").$Enums.KycStatus;
+            userId: string;
         } | null;
         accounts: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            userId: string;
             accountNumber: string;
             type: string;
             balance: import("@prisma/client-runtime-utils").Decimal;
             currency: string;
             status: import("@prisma/client").$Enums.AccountStatus;
+            userId: string;
         }[];
     } & {
         id: string;
@@ -44,7 +44,6 @@ export declare class StaffController {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            userId: string;
             firstName: string;
             lastName: string;
             phoneNumber: string;
@@ -53,17 +52,18 @@ export declare class StaffController {
             nationalId: string | null;
             kycLevel: number;
             kycStatus: import("@prisma/client").$Enums.KycStatus;
+            userId: string;
         } | null;
         accounts: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            userId: string;
             accountNumber: string;
             type: string;
             balance: import("@prisma/client-runtime-utils").Decimal;
             currency: string;
             status: import("@prisma/client").$Enums.AccountStatus;
+            userId: string;
         }[];
         auditLogs: {
             id: string;
@@ -71,15 +71,16 @@ export declare class StaffController {
             userId: string | null;
             action: string;
             resource: string;
+            resourceId: string | null;
             metadata: import("@prisma/client/runtime/client").JsonValue | null;
         }[];
         loans: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            userId: string;
             type: string;
             status: import("@prisma/client").$Enums.LoanStatus;
+            userId: string;
             amount: import("@prisma/client-runtime-utils").Decimal;
             interestRate: import("@prisma/client-runtime-utils").Decimal;
             termMonths: number;
@@ -96,10 +97,20 @@ export declare class StaffController {
         updatedAt: Date;
     }>;
     updateKyc(id: string, dto: UpdateKycStatusDto): Promise<{
+        user: {
+            id: string;
+            email: string;
+            password: string;
+            role: import("@prisma/client").$Enums.Role;
+            isMfaEnabled: boolean;
+            mfaSecret: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+        };
+    } & {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         firstName: string;
         lastName: string;
         phoneNumber: string;
@@ -108,6 +119,7 @@ export declare class StaffController {
         nationalId: string | null;
         kycLevel: number;
         kycStatus: import("@prisma/client").$Enums.KycStatus;
+        userId: string;
     }>;
     getAuditLogs(limit: string): Promise<({
         user: {
@@ -123,6 +135,7 @@ export declare class StaffController {
         userId: string | null;
         action: string;
         resource: string;
+        resourceId: string | null;
         metadata: import("@prisma/client/runtime/client").JsonValue | null;
     })[]>;
 }

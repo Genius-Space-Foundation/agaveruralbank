@@ -61,7 +61,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = (token: string, userData: User) => {
     Cookies.set('agave_token', token, { expires: 1, secure: true }); // Token expires in 1 day
     setUser(userData);
-    router.push('/dashboard');
+    
+    // Role-based routing
+    if (userData.role === 'ADMIN' || userData.role === 'TELLER' || userData.role === 'SUPERADMIN') {
+      router.push('/staff');
+    } else {
+      router.push('/dashboard');
+    }
   };
 
   const logout = () => {

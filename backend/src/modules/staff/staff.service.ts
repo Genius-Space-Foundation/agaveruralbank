@@ -63,13 +63,31 @@ export class StaffService {
         newLevel = 2; // Bump to level 2 on verification
     }
 
-    return this.prisma.profile.update({
+    const profile = await this.prisma.profile.update({
         where: { userId },
         data: {
             kycStatus: dto.status,
             kycLevel: newLevel
-        }
+        },
+        include: { user: true }
     });
+
+    // Create audit log for KYC update
+    await this.prisma.auditLog.create({
+      data: {
+        action: `KYC_${dto.status}`,
+        resource: 'Profile',
+        resourceId: userId,
+        userId: userId,
+        metadata: { 
+          status: dto.status, 
+          previousLevel: profile.kycLevel,
+          newLevel 
+        },
+      },
+    });
+
+    return profile;
   }
 
   async getAuditLogs(limit: number = 50) {

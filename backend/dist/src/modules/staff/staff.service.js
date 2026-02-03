@@ -66,13 +66,28 @@ let StaffService = class StaffService {
         if (dto.status === 'VERIFIED') {
             newLevel = 2;
         }
-        return this.prisma.profile.update({
+        const profile = await this.prisma.profile.update({
             where: { userId },
             data: {
                 kycStatus: dto.status,
                 kycLevel: newLevel
-            }
+            },
+            include: { user: true }
         });
+        await this.prisma.auditLog.create({
+            data: {
+                action: `KYC_${dto.status}`,
+                resource: 'Profile',
+                resourceId: userId,
+                userId: userId,
+                metadata: {
+                    status: dto.status,
+                    previousLevel: profile.kycLevel,
+                    newLevel
+                },
+            },
+        });
+        return profile;
     }
     async getAuditLogs(limit = 50) {
         return this.prisma.auditLog.findMany({

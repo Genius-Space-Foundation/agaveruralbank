@@ -91,6 +91,19 @@ let SuperadminService = class SuperadminService {
                 profile: true,
             },
         });
+        await this.prisma.auditLog.create({
+            data: {
+                action: 'STAFF_USER_CREATED',
+                resource: 'User',
+                resourceId: user.id,
+                userId: user.id,
+                metadata: {
+                    email: user.email,
+                    role: dto.role,
+                    createdBy: 'SUPERADMIN'
+                },
+            },
+        });
         return {
             user,
             temporaryPassword: tempPassword,
