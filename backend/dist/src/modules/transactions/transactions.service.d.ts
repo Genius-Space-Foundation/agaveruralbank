@@ -11,10 +11,10 @@ export declare class TransactionsService {
         currency: string;
         status: import("@prisma/client").$Enums.TransactionStatus;
         description: string | null;
-        senderAccountId: string | null;
-        amount: import("@prisma/client-runtime-utils").Decimal;
-        idempotencyKey: string | null;
         reference: string;
+        idempotencyKey: string | null;
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        senderAccountId: string | null;
         receiverAccountId: string | null;
     }>;
     getHistory(userId: string, accountId: string): Promise<({
@@ -32,10 +32,10 @@ export declare class TransactionsService {
         currency: string;
         status: import("@prisma/client").$Enums.TransactionStatus;
         description: string | null;
-        senderAccountId: string | null;
-        amount: import("@prisma/client-runtime-utils").Decimal;
-        idempotencyKey: string | null;
         reference: string;
+        idempotencyKey: string | null;
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        senderAccountId: string | null;
         receiverAccountId: string | null;
     })[]>;
 }

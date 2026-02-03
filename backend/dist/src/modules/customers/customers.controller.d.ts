@@ -20,6 +20,7 @@ export declare class CustomersController {
         dateOfBirth: Date | null;
         nationalId: string | null;
         kycLevel: number;
+        kycStatus: import("@prisma/client").$Enums.KycStatus;
         userId: string;
     }>;
     updateProfile(req: any, dto: UpdateProfileDto): Promise<{
@@ -33,6 +34,7 @@ export declare class CustomersController {
         dateOfBirth: Date | null;
         nationalId: string | null;
         kycLevel: number;
+        kycStatus: import("@prisma/client").$Enums.KycStatus;
         userId: string;
     }>;
     upgradeKyc(req: any, dto: kycValueDto): Promise<{
@@ -46,6 +48,7 @@ export declare class CustomersController {
         dateOfBirth: Date | null;
         nationalId: string | null;
         kycLevel: number;
+        kycStatus: import("@prisma/client").$Enums.KycStatus;
         userId: string;
     }>;
 }

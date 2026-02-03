@@ -8,43 +8,43 @@ export declare class GoalsService {
         createdAt: Date;
         updatedAt: Date;
         currency: string;
-        title: string;
         userId: string;
+        title: string;
         targetAmount: import("@prisma/client-runtime-utils").Decimal;
-        deadline: Date | null;
         currentAmount: import("@prisma/client-runtime-utils").Decimal;
+        deadline: Date | null;
     }>;
     findAll(userId: string): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
         currency: string;
-        title: string;
         userId: string;
+        title: string;
         targetAmount: import("@prisma/client-runtime-utils").Decimal;
-        deadline: Date | null;
         currentAmount: import("@prisma/client-runtime-utils").Decimal;
+        deadline: Date | null;
     }[]>;
     updateProgress(userId: string, id: string, dto: UpdateGoalAmountDto): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
         currency: string;
-        title: string;
         userId: string;
+        title: string;
         targetAmount: import("@prisma/client-runtime-utils").Decimal;
-        deadline: Date | null;
         currentAmount: import("@prisma/client-runtime-utils").Decimal;
+        deadline: Date | null;
     }>;
     delete(userId: string, id: string): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
         currency: string;
-        title: string;
         userId: string;
+        title: string;
         targetAmount: import("@prisma/client-runtime-utils").Decimal;
-        deadline: Date | null;
         currentAmount: import("@prisma/client-runtime-utils").Decimal;
+        deadline: Date | null;
     }>;
 }

@@ -14,6 +14,7 @@ enum Role {
   TELLER
   LOAN_OFFICER
   ADMIN
+  SUPERADMIN
 }
 
 enum AccountStatus {
@@ -36,6 +37,12 @@ enum TransactionType {
   TRANSFER
   LOAN_DISBURSEMENT
   LOAN_REPAYMENT
+}
+
+enum KycStatus {
+  PENDING
+  VERIFIED
+  REJECTED
 }
 
 model User {
@@ -99,6 +106,7 @@ model Profile {
   dateOfBirth   DateTime?
   nationalId    String?   @unique // Encrypted
   kycLevel      Int       @default(1)
+  kycStatus     KycStatus @default(PENDING)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }

@@ -30,7 +30,28 @@ async function main() {
       },
     },
   });
-  console.log('✅ Admin user created');
+  console.log('✅ Teller user created');
+
+  // 4. Create Super Admin
+  const superAdminPassword = await bcrypt.hash('SuperAdmin@2026', 10);
+  await prisma.user.upsert({
+    where: { email: 'superadmin@agaveruralbank.com' },
+    update: {},
+    create: {
+      email: 'superadmin@agaveruralbank.com',
+      password: superAdminPassword,
+      role: Role.SUPERADMIN,
+      profile: {
+        create: {
+          firstName: 'Super',
+          lastName: 'Admin',
+          phoneNumber: '+233000000002',
+          kycLevel: 3,
+        },
+      },
+    },
+  });
+  console.log('✅ Super Admin user created');
 
   // 2. Create a Test Customer
   const customerPassword = await bcrypt.hash('Customer@123', 10);

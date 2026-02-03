@@ -11,9 +11,9 @@ export declare class LoansService {
         status: import("@prisma/client").$Enums.LoanStatus;
         userId: string;
         amount: import("@prisma/client-runtime-utils").Decimal;
+        interestRate: import("@prisma/client-runtime-utils").Decimal;
         termMonths: number;
         purpose: string;
-        interestRate: import("@prisma/client-runtime-utils").Decimal;
     }>;
     findAll(userId: string): Promise<{
         id: string;
@@ -23,9 +23,9 @@ export declare class LoansService {
         status: import("@prisma/client").$Enums.LoanStatus;
         userId: string;
         amount: import("@prisma/client-runtime-utils").Decimal;
+        interestRate: import("@prisma/client-runtime-utils").Decimal;
         termMonths: number;
         purpose: string;
-        interestRate: import("@prisma/client-runtime-utils").Decimal;
     }[]>;
     findOne(userId: string, id: string): Promise<{
         id: string;
@@ -35,8 +35,8 @@ export declare class LoansService {
         status: import("@prisma/client").$Enums.LoanStatus;
         userId: string;
         amount: import("@prisma/client-runtime-utils").Decimal;
+        interestRate: import("@prisma/client-runtime-utils").Decimal;
         termMonths: number;
         purpose: string;
-        interestRate: import("@prisma/client-runtime-utils").Decimal;
     }>;
 }
